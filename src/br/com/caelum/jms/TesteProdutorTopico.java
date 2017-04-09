@@ -14,7 +14,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 
-public class TesteProdutor {
+public class TesteProdutorTopico {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
@@ -26,9 +26,9 @@ public class TesteProdutor {
 		connection.start();
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		
-		Destination fila = (Destination) context.lookup("financeiro");
+		Destination topico = (Destination) context.lookup("loja");
 			
-		MessageProducer producer = session.createProducer(fila);
+		MessageProducer producer = session.createProducer(topico);
 		
 		Message msg = session.createTextMessage("test QueueProducer");
 		
